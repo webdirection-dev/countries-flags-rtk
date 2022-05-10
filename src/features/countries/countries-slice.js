@@ -53,7 +53,7 @@ const countriesSlice = createSlice({
             .addCase(
                 loadCountries.rejected,
                 (state, action) => {
-                    state.status = 'idle'
+                    state.status = 'rejected'
                     state.error = action.payload || action.meta.error
                 }
             )

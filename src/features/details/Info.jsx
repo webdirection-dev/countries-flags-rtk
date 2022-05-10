@@ -1,9 +1,5 @@
-import {useSelector, useDispatch} from "react-redux";
-import {loadNeighborsByBorders} from "../store/details/details-actions";
-import {selectNeighbors} from "../store/details/details-selectors";
-
+import {useNeighbors} from "./customHooks/use-neighbors";
 import styled from 'styled-components';
-import {useEffect} from "react";
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -107,12 +103,7 @@ export const Info = (props) => {
         push,
     } = props;
 
-    const dispatch = useDispatch()
-    const neighbors = useSelector(selectNeighbors)
-
-    useEffect(() => {
-        if (borders.length) dispatch(loadNeighborsByBorders(borders))
-    }, [borders, dispatch])
+    const neighbors = useNeighbors(borders)
 
     return (
         <Wrapper>
